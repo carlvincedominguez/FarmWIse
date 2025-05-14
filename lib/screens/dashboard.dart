@@ -10,7 +10,28 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('FarmWise Dashboard')),
-      body: GridView.count(
+      
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset('assets/logo.png', height: 100),
+          ),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              padding: EdgeInsets.all(16),
+              children: [
+                _DashboardTile(title: 'Livestock', icon: Icons.pets, screen: LivestockScreen()),
+                _DashboardTile(title: 'Records', icon: Icons.book, screen: RecordsScreen()),
+                _DashboardTile(title: 'Reports', icon: Icons.bar_chart, screen: ReportsScreen()),
+                _DashboardTile(title: 'Settings', icon: Icons.settings, screen: SettingsScreen()),
+              ],
+            ),
+          ),
+        ],
+      ),
+
         crossAxisCount: 2,
         padding: EdgeInsets.all(16),
         children: [
